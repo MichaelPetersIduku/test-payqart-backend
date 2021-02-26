@@ -1,16 +1,16 @@
 import { NextFunction, Request, Response } from "express";
 import { UniversalsController } from "../../@core/common/universals.controller";
-import { WalletService } from "./wallet.service";
+import { PaymentService } from "./payment.service";
 
-export class WalletController extends UniversalsController {
-  public wallet = async (
+export class PaymentController extends UniversalsController {
+  public users = async (
     req: Request,
     res: Response,
     next: NextFunction
   ): Promise<void> => {
     const { ip, method, originalUrl } = req;
     try {
-      const response = await new WalletService().wallet(
+      const response = await new PaymentService().payment(
         { ip, method, originalUrl },
         req
       );
@@ -20,14 +20,14 @@ export class WalletController extends UniversalsController {
     }
   };
 
-  public updateWallet = async (
+  public paymentBreakDown = async (
     req: Request,
     res: Response,
     next: NextFunction
   ): Promise<void> => {
     const { ip, method, originalUrl } = req;
     try {
-      const response = await new WalletService().updateWallet(
+      const response = await new PaymentService().paymentBreakDown(
         { ip, method, originalUrl },
         req
       );

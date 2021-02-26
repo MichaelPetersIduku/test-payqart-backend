@@ -1,19 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
-import { config } from "secreta";
 
-const { MONGODB_URL } = config;
 const { connection } = mongoose;
 const app = express();
 
 export const connectMongo = () => {
-  mongoose.connect(MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    autoIndex: false,
-  });
+  //Connnect to database here
 };
 
 connection.on("error", (error: any) => {
